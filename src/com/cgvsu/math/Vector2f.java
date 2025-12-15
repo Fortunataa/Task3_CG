@@ -8,4 +8,12 @@ public class Vector2f {
     }
 
     float x, y;
+
+    public float getY() {
+        return y;
+    }
+
+    public float getX() {
+        return x;
+    }
 }
