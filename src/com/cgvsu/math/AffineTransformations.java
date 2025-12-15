@@ -1,5 +1,7 @@
 package com.cgvsu.math;
 
+import com.cgvsu.model.Model;
+
 public class AffineTransformations {
     private Matrix4f matrix;
 
@@ -68,5 +70,17 @@ public class AffineTransformations {
                 {0, 0, 0, 1}
         });
         matrix = matrix.matrixMultiplication(scaling);
+    }
+
+    public void applyToModel(Model model) {
+        for (int i = 0; i < model.vertices.size(); i++) {
+            Vector3f vertex = model.vertices.get(i);
+            Vector3f transform = matrix.multiplyMatrixByVector(vertex);
+            model.vertices.set(i, transform);
+        }
+    }
+
+    public void reset() {
+        matrix.createUnitMatrix();
     }
 }
