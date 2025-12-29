@@ -27,14 +27,14 @@ public class AffineTransformations {
         float sin = (float) Math.sin(rad);
         float cos = (float) Math.cos(rad);
 
-        Matrix4f rotation = new Matrix4f(new float[][] {
+        Matrix4f rotation = new Matrix4f(new float[][]{
                 {1, 0, 0, 0,},
                 {0, cos, -sin, 0},
                 {0, sin, cos, 0},
                 {0, 0, 0, 1}
         });
 
-        matrix = matrix.matrixMultiplication(rotation);
+        matrix = matrix.multiply(rotation);
         return this;
     }
 
@@ -48,13 +48,13 @@ public class AffineTransformations {
         float sin = (float) Math.sin(rad);
         float cos = (float) Math.cos(rad);
 
-        Matrix4f rotation = new Matrix4f(new float[][] {
+        Matrix4f rotation = new Matrix4f(new float[][]{
                 {cos, 0, sin, 0,},
                 {0, 1, 0, 0},
                 {-sin, 0, cos, 0},
                 {0, 0, 0, 1}
         });
-        matrix = matrix.matrixMultiplication(rotation);
+        matrix = matrix.multiply(rotation);
         return this;
     }
 
@@ -68,13 +68,13 @@ public class AffineTransformations {
         float sin = (float) Math.sin(rad);
         float cos = (float) Math.cos(rad);
 
-        Matrix4f rotation = new Matrix4f(new float[][] {
+        Matrix4f rotation = new Matrix4f(new float[][]{
                 {cos, -sin, 0, 0},
                 {sin, cos, 0, 0},
                 {0, 0, 1, 0},
                 {0, 0, 0, 1}
         });
-        matrix = matrix.matrixMultiplication(rotation);
+        matrix = matrix.multiply(rotation);
         return this;
     }
 
@@ -106,7 +106,7 @@ public class AffineTransformations {
                 {0, 0, 1, tz},
                 {0, 0, 0, 1}
         });
-        matrix = matrix.matrixMultiplication(translation);
+        matrix = matrix.multiply(translation);
         return this;
     }
 
@@ -116,7 +116,7 @@ public class AffineTransformations {
      * @return этот объект для цепочки вызовов
      */
     public AffineTransformations translation(Vector3f vector) {
-        return translation(vector.x, vector.y, vector.z);
+        return translation(vector.getX(), vector.getY(), vector.getZ());
     }
 
     /**
@@ -168,13 +168,13 @@ public class AffineTransformations {
      * @return этот объект для цепочки вызовов
      */
     public AffineTransformations scaling(float sx, float sy, float sz) {
-        Matrix4f scaling = new Matrix4f(new float[][] {
+        Matrix4f scaling = new Matrix4f(new float[][]{
                 {sx, 0, 0, 0},
                 {0, sy, 0, 0},
                 {0, 0, sz, 0},
                 {0, 0, 0, 1}
         });
-        matrix = matrix.matrixMultiplication(scaling);
+        matrix = matrix.multiply(scaling);
         return this;
     }
 
@@ -220,7 +220,7 @@ public class AffineTransformations {
      * @return этот объект для цепочки вызовов
      */
     public AffineTransformations scaleByVector(Vector3f vector) {
-        return scaling(vector.x, vector.y, vector.z);
+        return scaling(vector.getX(), vector.getY(), vector.getZ());
     }
 
     /**
@@ -230,7 +230,7 @@ public class AffineTransformations {
      * @return этот объект для цепочки вызовов
      */
     public AffineTransformations scale(Axis axis, float ratio) {
-        return switch (axis){
+        return switch (axis) {
             case X -> scalingByX(ratio);
             case Y -> scalingByY(ratio);
             case Z -> scalingByZ(ratio);
@@ -243,7 +243,7 @@ public class AffineTransformations {
      * @return этот объект для цепочки вызовов
      */
     public AffineTransformations apply(AffineTransformations other) {
-        this.matrix = this.matrix.matrixMultiplication(other.getMatrix());
+        this.matrix = this.matrix.multiply(other.getMatrix());
         return this;
     }
 
@@ -274,7 +274,7 @@ public class AffineTransformations {
      * @return новое преобразование, являющееся комбинацией текущего и другого
      */
     public AffineTransformations combination(AffineTransformations other) {
-        Matrix4f result = this.matrix.matrixMultiplication((other.getMatrix()));
+        Matrix4f result = this.matrix.multiply((other.getMatrix()));
         return new AffineTransformations(result);
     }
 

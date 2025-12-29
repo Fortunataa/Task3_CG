@@ -1,10 +1,12 @@
 package com.cgvsu.math;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AffineTransformationsTest {
-    private static final float EPS= 0.0001f;
+    private static final float EPS = 0.0001f;
     private AffineTransformations transform;
 
     @BeforeEach
@@ -18,9 +20,9 @@ public class AffineTransformationsTest {
         Vector3f vector3f = new Vector3f(1, 1, 1);
         Vector3f resultVector = transform.applyToVector(vector3f);
 
-        assertEquals(3, resultVector.x, EPS);
-        assertEquals(4, resultVector.y, EPS);
-        assertEquals(5, resultVector.z, EPS);
+        assertEquals(3, resultVector.getX(), EPS);
+        assertEquals(4, resultVector.getY(), EPS);
+        assertEquals(5, resultVector.getZ(), EPS);
     }
 
     @Test
@@ -29,9 +31,9 @@ public class AffineTransformationsTest {
         Vector3f vector3f = new Vector3f(1, 2, 3);
         Vector3f resultVector = transform.applyToVector(vector3f);
 
-        assertEquals(6, resultVector.x, EPS);
-        assertEquals(2, resultVector.y, EPS);
-        assertEquals(3, resultVector.z, EPS);
+        assertEquals(6, resultVector.getX(), EPS);
+        assertEquals(2, resultVector.getY(), EPS);
+        assertEquals(3, resultVector.getZ(), EPS);
     }
 
     @Test
@@ -40,9 +42,9 @@ public class AffineTransformationsTest {
         Vector3f vector3f = new Vector3f(10, 5, 7);
         Vector3f resultVector = transform.applyToVector(vector3f);
 
-        assertEquals(10, resultVector.x, EPS);
-        assertEquals(-5, resultVector.y, EPS);
-        assertEquals(7, resultVector.z, EPS);
+        assertEquals(10, resultVector.getX(), EPS);
+        assertEquals(-5, resultVector.getY(), EPS);
+        assertEquals(7, resultVector.getZ(), EPS);
     }
 
     @Test
@@ -51,9 +53,9 @@ public class AffineTransformationsTest {
         Vector3f vector3f = new Vector3f(10, 0, 9);
         Vector3f resultVector = transform.applyToVector(vector3f);
 
-        assertEquals(10, resultVector.x, EPS);
-        assertEquals(0, resultVector.y, EPS);
-        assertEquals(10.578, resultVector.z, EPS);
+        assertEquals(10, resultVector.getX(), EPS);
+        assertEquals(0, resultVector.getY(), EPS);
+        assertEquals(10.578, resultVector.getZ(), EPS);
     }
 
     @Test
@@ -63,9 +65,9 @@ public class AffineTransformationsTest {
         Vector3f original = new Vector3f(4, 5, 6);
         Vector3f resultVector = transform.applyToVector(original);
 
-        assertEquals(5, resultVector.x, EPS);
-        assertEquals(7, resultVector.y, EPS);
-        assertEquals(9, resultVector.z, EPS);
+        assertEquals(5, resultVector.getX(), EPS);
+        assertEquals(7, resultVector.getY(), EPS);
+        assertEquals(9, resultVector.getZ(), EPS);
     }
 
     @Test
@@ -74,9 +76,9 @@ public class AffineTransformationsTest {
         Vector3f original = new Vector3f(1, 2, 3);
         Vector3f resultVector = transform.applyToVector(original);
 
-        assertEquals(2, resultVector.x, EPS);
-        assertEquals(6, resultVector.y, EPS);
-        assertEquals(12, resultVector.z, EPS);
+        assertEquals(2, resultVector.getX(), EPS);
+        assertEquals(6, resultVector.getY(), EPS);
+        assertEquals(12, resultVector.getZ(), EPS);
     }
 
     @Test
@@ -85,9 +87,9 @@ public class AffineTransformationsTest {
         Vector3f original = new Vector3f(3, 4, 5);
         Vector3f resultVector = transform.applyToVector(original);
 
-        assertEquals(6, resultVector.x, EPS);
-        assertEquals(4, resultVector.y, EPS);
-        assertEquals(5, resultVector.z, EPS);
+        assertEquals(6, resultVector.getX(), EPS);
+        assertEquals(4, resultVector.getY(), EPS);
+        assertEquals(5, resultVector.getZ(), EPS);
     }
 
     @Test
@@ -96,9 +98,9 @@ public class AffineTransformationsTest {
         Vector3f original = new Vector3f(2, 3, 4);
         Vector3f resultVector = transform.applyToVector(original);
 
-        assertEquals(5, resultVector.x, EPS);
-        assertEquals(7.5, resultVector.y, EPS);
-        assertEquals(10, resultVector.z, EPS);
+        assertEquals(5, resultVector.getX(), EPS);
+        assertEquals(7.5, resultVector.getY(), EPS);
+        assertEquals(10, resultVector.getZ(), EPS);
     }
 
     @Test
@@ -109,9 +111,9 @@ public class AffineTransformationsTest {
         float sin45 = (float) Math.sin(Math.toRadians(45));
         Vector3f resultVector = transform.applyToVector(original);
 
-        assertEquals(0, resultVector.x, EPS);
-        assertEquals(cos45, resultVector.y, EPS);
-        assertEquals(sin45, resultVector.z, EPS);
+        assertEquals(0, resultVector.getX(), EPS);
+        assertEquals(cos45, resultVector.getY(), EPS);
+        assertEquals(sin45, resultVector.getZ(), EPS);
     }
 
     @Test
@@ -122,9 +124,9 @@ public class AffineTransformationsTest {
         float sin30 = (float) Math.sin(Math.toRadians(30));
         Vector3f resultVector = transform.applyToVector(original);
 
-        assertEquals(sin30, resultVector.x, EPS);
-        assertEquals(0, resultVector.y, EPS);
-        assertEquals(cos30, resultVector.z, EPS);
+        assertEquals(sin30, resultVector.getX(), EPS);
+        assertEquals(0, resultVector.getY(), EPS);
+        assertEquals(cos30, resultVector.getZ(), EPS);
     }
 
     @Test
@@ -135,9 +137,9 @@ public class AffineTransformationsTest {
         float sin60 = (float) Math.sin(Math.toRadians(60));
         Vector3f resultVector = transform.applyToVector(original);
 
-        assertEquals(cos60, resultVector.x, EPS);
-        assertEquals(sin60, resultVector.y, EPS);
-        assertEquals(0, resultVector.z, EPS);
+        assertEquals(cos60, resultVector.getX(), EPS);
+        assertEquals(sin60, resultVector.getY(), EPS);
+        assertEquals(0, resultVector.getZ(), EPS);
     }
 
     @Test
@@ -146,9 +148,9 @@ public class AffineTransformationsTest {
         Vector3f original = new Vector3f(1, 1, 1);
         Vector3f resultVector = transform.applyToVector(original);
 
-        assertEquals(4, resultVector.x, EPS);
-        assertEquals(6, resultVector.y, EPS);
-        assertEquals(8, resultVector.z, EPS);
+        assertEquals(4, resultVector.getX(), EPS);
+        assertEquals(6, resultVector.getY(), EPS);
+        assertEquals(8, resultVector.getZ(), EPS);
     }
 
     @Test
@@ -159,9 +161,9 @@ public class AffineTransformationsTest {
         Vector3f original = new Vector3f(1, 0, 0);
         Vector3f resultVector = translation.applyToVector(original);
 
-        assertEquals(2, resultVector.x, EPS);
-        assertEquals(1, resultVector.y, EPS);
-        assertEquals(0, resultVector.z, EPS);
+        assertEquals(2, resultVector.getX(), EPS);
+        assertEquals(1, resultVector.getY(), EPS);
+        assertEquals(0, resultVector.getZ(), EPS);
     }
 
     @Test
@@ -172,9 +174,9 @@ public class AffineTransformationsTest {
         Vector3f testVector = new Vector3f(0, 0, 0);
         Vector3f resultVector = copy.applyToVector(testVector);
 
-        assertEquals(1, resultVector.x, EPS);
-        assertEquals(2, resultVector.y, EPS);
-        assertEquals(3, resultVector.z, EPS);
+        assertEquals(1, resultVector.getX(), EPS);
+        assertEquals(2, resultVector.getY(), EPS);
+        assertEquals(3, resultVector.getZ(), EPS);
     }
 
     @Test
@@ -184,9 +186,9 @@ public class AffineTransformationsTest {
         Vector3f original = new Vector3f(1, 2, 3);
         Vector3f resultVector = transform.applyToVector(original);
 
-        assertEquals(1, resultVector.x, EPS);
-        assertEquals(2, resultVector.y, EPS);
-        assertEquals(3, resultVector.z, EPS);
+        assertEquals(1, resultVector.getX(), EPS);
+        assertEquals(2, resultVector.getY(), EPS);
+        assertEquals(3, resultVector.getZ(), EPS);
     }
 
     @Test
@@ -195,9 +197,9 @@ public class AffineTransformationsTest {
         Vector3f original = new Vector3f(1, 1, 1);
         Vector3f resultVector = transform.applyToVector(original);
 
-        assertEquals(3, resultVector.x, EPS);
-        assertEquals(2, resultVector.y, EPS);
-        assertEquals(1, resultVector.z, EPS);
+        assertEquals(3, resultVector.getX(), EPS);
+        assertEquals(2, resultVector.getY(), EPS);
+        assertEquals(1, resultVector.getZ(), EPS);
     }
 
     @Test
@@ -206,20 +208,20 @@ public class AffineTransformationsTest {
         Vector3f original = new Vector3f(0, 0, 0);
         Vector3f resultVector = transform.applyToVector(original);
 
-        assertEquals(5, resultVector.x, EPS);
-        assertEquals(0, resultVector.y, EPS);
-        assertEquals(-2, resultVector.z, EPS);
+        assertEquals(5, resultVector.getX(), EPS);
+        assertEquals(0, resultVector.getY(), EPS);
+        assertEquals(-2, resultVector.getZ(), EPS);
     }
 
     @Test
     void testRotateWithAxis() {
-        transform.rotate(AffineTransformations.Axis.Y, 90);
+        transform.rotate(AffineTransformations.Axis.X, 90);
         Vector3f original = new Vector3f(1, 0, 0);
         Vector3f resultVector = transform.applyToVector(original);
 
-        assertEquals(0, resultVector.x, EPS);
-        assertEquals(0, resultVector.y, EPS);
-        assertEquals(-1, resultVector.z, EPS);
+        assertEquals(1, resultVector.getX(), EPS);
+        assertEquals(0, resultVector.getY(), EPS);
+        assertEquals(0, resultVector.getZ(), EPS);
     }
 
     @Test
@@ -229,8 +231,8 @@ public class AffineTransformationsTest {
         Vector3f original = new Vector3f(4, 6, 2);
         Vector3f resultVector = transform.applyToVector(original);
 
-        assertEquals(8, resultVector.x, EPS);
-        assertEquals(3, resultVector.y, EPS);
-        assertEquals(6, resultVector.z, EPS);
+        assertEquals(8, resultVector.getX(), EPS);
+        assertEquals(3, resultVector.getY(), EPS);
+        assertEquals(6, resultVector.getZ(), EPS);
     }
 }
