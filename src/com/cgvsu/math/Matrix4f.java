@@ -27,6 +27,13 @@ public class Matrix4f {
         }
     }
 
+    public Matrix4f(Matrix4f other) {
+        this.matrix = new float[4][4];
+        for (int i = 0; i < 4; i++) {
+            this.matrix[i] = Arrays.copyOf(other.matrix[i], 4);
+        }
+    }
+
     public void createUnitMatrix() {
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
@@ -64,5 +71,9 @@ public class Matrix4f {
         }
 
         return new Vector3f(result[0], result[1], result[2]);
+    }
+
+    public float get(int row, int col) {
+        return matrix[row][col];
     }
 }
